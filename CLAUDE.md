@@ -1,14 +1,13 @@
 # CLAUDE.md
 
-This file provides guidance for AI assistants (Claude, Copilot, etc.) working in this repository.
+This file provides guidance for creating website for waterpark working in this repository.
 Keep it updated as the project evolves.
 
 ---
 
 ## Project Overview
 
-> **TODO:** Replace this section with a description of what this project does, who its users are,
-> and what problem it solves.
+Build a modern, mobile-friendly website for Viraj Waterpark, Kagal (Kolhapur) that allows visitors to discover the park and book tickets online with ease.
 
 **Status:** Repository initialized; codebase not yet added.
 
@@ -28,11 +27,10 @@ project/
 
 ## Tech Stack
 
-> **TODO:** Fill in the languages, frameworks, libraries, and tools this project uses.
 
 | Layer | Technology |
 |-------|-----------|
-| Language | — |
+| Language | python |
 | Framework | — |
 | Database | — |
 | Testing | — |
