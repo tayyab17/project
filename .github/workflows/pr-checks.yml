@@ -1,0 +1,55 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify generator runs without errors
+        run: python generate_website.py
+
+      - name: Check all HTML pages were created
+        run: |
+          for page in index about attractions contact; do
+            if [ ! -f "viraj_junction/${page}.html" ]; then
+              echo "MISSING: viraj_junction/${page}.html"
+              exit 1
+            fi
+          done
+          echo "All pages present."
+
+      - name: Check stylesheet was created
+        run: |
+          [ -f viraj_junction/style.css ] && echo "style.css OK" || (echo "MISSING: style.css" && exit 1)
+
+      - name: Validate HTML structure (basic)
+        run: |
+          python - <<'EOF'
+          import os, sys
+          required_tags = ["<!DOCTYPE html>", "<html", "<head>", "<body>", "</html>"]
+          errors = []
+          for fname in os.listdir("viraj_junction"):
+              if not fname.endswith(".html"):
+                  continue
+              content = open(f"viraj_junction/{fname}").read()
+              for tag in required_tags:
+                  if tag not in content:
+                      errors.append(f"{fname}: missing '{tag}'")
+          if errors:
+              print("\n".join(errors))
+              sys.exit(1)
+          print("HTML structure OK")
+          EOF
