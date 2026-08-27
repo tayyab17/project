@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.2/schema.json",
+  "version": "v1.2",
+  "name": "Informatica Mapping Researcher",
+  "description": "Answers questions about our Informatica mappings — sources, targets, columns, transformation logic and column-level lineage — from the exported repository metadata.",
+  "instructions": "$[file('instructions.md')]",
+  "conversation_starters": [
+    {
+      "title": "Source and target",
+      "text": "What is the source and target of mapping m_LND_TO_DIM_CUSTOMER?"
+    },
+    {
+      "title": "Columns loaded",
+      "text": "Which columns does m_LND_TO_DIM_CUSTOMER load into DIM_CUSTOMER, with datatypes?"
+    },
+    {
+      "title": "Column lineage",
+      "text": "Where does CUST_FULL_NAME in DIM_CUSTOMER come from?"
+    },
+    {
+      "title": "Transformation logic",
+      "text": "What filters, lookups and expressions run inside m_LND_TO_DIM_CUSTOMER?"
+    },
+    {
+      "title": "Impact analysis",
+      "text": "Which mappings read or write LND_CUSTOMER?"
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "OneDriveAndSharePoint",
+      "items_by_url": [
+        {
+          "url": "https://REPLACE-ME.sharepoint.com/sites/DataEngineering/Shared%20Documents/InformaticaKB"
+        }
+      ]
+    }
+  ]
+}

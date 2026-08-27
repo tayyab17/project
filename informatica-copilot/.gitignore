@@ -1,0 +1,3 @@
+# Raw repository exports may contain schema and SQL that should not be in Git.
+exports/
+__pycache__/
